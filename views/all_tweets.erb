@@ -1,16 +1,16 @@
 <h1> Tweets from people you follow </h1>
 
 <br>
-		<div class="TweetBack" >
 		<ul>
-			.
 			<% user_array=[] %>
 			<% follow_id.each do |following_obj| %>
 				<% tweets_obj=Tweets.all(:user_id => following_obj.following_id.to_i) %>
 				<% user=User.get(following_obj.following_id) %>
-			
+
 				<% tweets_obj.each do |tweet_obj| %> 
 
+				<div class="TweetBack" >
+				
 				<li class="TweetDesc">
 
 				<%= tweet_obj.content %>
@@ -25,11 +25,11 @@
 				<input type="submit" value="View Likers" />
 				</form>
 
+				</li>
+
 				</div>
 
 					<%=tweet_obj.counter %> Likes <br> Tweet By: <%= user.username %>
-
-				</li>
 
 				<br>
 
