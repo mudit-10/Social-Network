@@ -1,0 +1,41 @@
+<div class="center_head" id="one"><%= user.username %>'s Follows </div>
+
+<br>
+
+<div class="center_head" id="two">
+
+<ul>
+
+	<% if following %>
+		<% following.each do |following_obj| %> 
+
+		<li>
+
+		<%= following_obj.username %>
+
+		</li>
+
+		<br>
+
+		<%end%>
+	<%end%>
+</ul>
+
+</div>
+
+<style>
+	.center_head 
+	{
+    margin: auto;
+	}
+	#one{
+		color: #00aced;
+		text-align: center;
+		font-size: 30px;
+	}
+	#two{
+		text-align: left;
+		color: #000000;
+		font-size: 20px;
+	}
+</style>

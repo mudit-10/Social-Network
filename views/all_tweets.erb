@@ -1,0 +1,51 @@
+<h1> Tweets from people you follow </h1>
+
+<br>
+		<div class="TweetBack" >
+		<ul>
+			.
+			<% user_array=[] %>
+			<% follow_id.each do |following_obj| %>
+				<% tweets_obj=Tweets.all(:user_id => following_obj.following_id.to_i) %>
+				<% user=User.get(following_obj.following_id) %>
+			
+				<% tweets_obj.each do |tweet_obj| %> 
+
+				<li class="TweetDesc">
+
+				<%= tweet_obj.content %>
+
+				<form style ="float: center;" action="/like" method="POST">
+				<input type="hidden" name="tweet_id" value="<%= tweet_obj.tweet_id %>" /> <br>
+				<input type="submit" value="Like" />
+				</form> 
+
+				<form style ="float: center;" action="/view_likers" method="GET">
+				<input type="hidden" name="tweet_id" value="<%= tweet_obj.tweet_id %>" /> <br>
+				<input type="submit" value="View Likers" />
+				</form>
+
+				</div>
+
+					<%=tweet_obj.counter %> Likes <br> Tweet By: <%= user.username %>
+
+				</li>
+
+				<br>
+
+				<%end%>
+			<%end%>
+		</ul>
+<style>
+	.TweetDesc
+			{
+				color: rgba(0,0,255,0.5);
+				text-align: center;
+				color: #00aced;
+				font-size: 25px;
+			}
+	.TweetBack
+			{
+				background-color: #c0deed;
+			}
+</style>

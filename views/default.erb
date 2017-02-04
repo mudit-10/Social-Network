@@ -1,0 +1,147 @@
+<% if user %>
+	<br> 
+
+
+	<form style ="float: left; padding: 5px;" action="/followers" method="POST">
+	<input type="hidden" name="followers" /> <br>
+	<input type="submit" value="YOUR FOLLOWERS" />
+	</form>
+
+	<form style ="float: left; padding: 5px;" action="/following" method="POST">
+	<input type="hidden" name="following" /> <br>
+	<input type="submit" value="FOLLOWING" />
+	</form>
+
+	<form style ="float: left; padding: 5px;" action="/all_tweets" method="POST">
+	<input type="hidden" name="all_tweets" /> <br>
+	<input type="submit" value="Tweet Feed" />
+	</form>
+
+	<form style ="float: right; padding: 15px;" action="/logout" method="POST">
+	<input type="submit" name="submit" value="Logout">
+	</form>
+
+	<br> <br> <br> <br> <br>
+
+	<h2 class="center_subheading"> See What's Happening Around The Globe... </h2>
+
+	<br> <br> <br>
+
+	<h1 class="center_welcome">Welcome <%= user.username %>!</h1>
+
+	<br><br>
+
+	<form class="tweet_center" action="/add_tweet" method="POST">
+	<input type="text" name="content" placeholder="What's on your mind?" class="form_size" /> <br><br>
+	<input type="submit" value="TWEET" class="disp" />
+	</form>
+
+	<br> <br> <br> <br>
+
+	<form action="/follow" method="POST" class="tweet_center" >
+	<label class="FollowDesc"> Enter the Username of the person you want to follow: </label> <input type="text" name="name">
+	<input type="submit" value="Follow" >
+	</form>
+
+	<h2 class="MyTweets"> Here are your Tweets </h2>
+
+	<ul class="TweetBack">
+
+	<% if my_tweets %>
+		<% my_tweets.each do |tweet_obj| %>
+
+		<br> <br> 
+
+		<li class="TweetDesc">
+
+		<%=tweet_obj.content%>
+
+		<br>
+
+		</form>
+
+		<form style="display:inline" action="/remove_tweet" method="POST">
+
+		<input type="hidden" name="tweet_id" value="<%= tweet_obj.tweet_id %>"/>
+		<input style="display:inline" type="submit" value="Delete Tweet">
+
+		</form>
+
+		</li>
+
+		<%end%>
+	<%end%>
+
+	</ul>
+
+	<br>
+
+	<br>
+
+
+	<style>
+		.disp
+			{
+				display: inline;
+			}
+		.MyTweets
+			{
+				color: #00aced;
+				text-decoration: underline;
+				font-size: 30px;
+			}
+		.TweetDesc
+			{
+				color: rgba(0,0,255,0.5);
+				text-align: center;
+				color: #00aced;
+				font-size: 25px;
+			}
+		.TweetBack
+			{
+				background-color: #c0deed;
+			}
+		.FollowDesc
+			{
+				font-size: 22px;
+				color: #000000;
+			}
+		.center_welcome 
+			{
+			margin: auto;
+		    width: 60%;
+		    border: 3px solid #00aced;
+		    padding: 10px;
+		    text-align: center;
+		    border-radius: 35px;
+			}
+		.tweet_center 
+			{
+			margin: auto;
+		    width: 60%;
+		    text-align: center;
+			}
+		.form_size 
+			{
+			margin: auto;
+		    width: 60%;
+		    text-align: center;
+		    font-size: 30px;
+			}
+		.center_subheading 
+			{
+			margin: auto;
+		    width: 40%;
+		    text-align: center;
+			}
+		.logout_right 
+			{
+			margin-left: 70%;
+		    width: 40%;
+		    text-align: center;
+			}
+	</style>
+
+<% end %>
+
+

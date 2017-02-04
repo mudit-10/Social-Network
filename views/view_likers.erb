@@ -1,0 +1,40 @@
+<div class="center_head" id="one"> All the Likers... </div>
+
+<br><br>
+
+<div class="center_head" id="two">
+<ul>
+	<% if likers %>
+		<% likers.each do |likes_obj| %> 
+		<% puts "*" %>
+
+		<li>
+
+		<%= likes_obj.username %>
+
+		</li>
+
+		<br>
+
+		<%end%>
+	<%end%>
+
+</ul>
+</div>
+
+<style>
+	.center_head {
+    margin: auto;
+	}
+	#one{
+		color: #00aced;
+		text-align: center;
+		font-size: 30px;
+	}
+	#two{
+		text-align: left;
+		color: #000000;
+		font-size: 20px;
+	}
+
+</style>
